@@ -5,13 +5,16 @@
     </div>
 </template>
 <script setup>
+definePageMeta({
+  middleware: ["auth"]
+})
 const runtimeConfig = useRuntimeConfig()
 console.log(runtimeConfig);
-const { pending, data } = useFetch('https://api.hackmd.io/v1/notes', {
-  lazy: true,
-  headers: {
-    // Authorization: `Bearer ${runtimeConfig.public.apiToken}`
-  }
-})
-console.log(data);
+// const { pending, data } = useFetch('https://api.hackmd.io/v1/notes', {
+//   lazy: true,
+//   headers: {
+//     // Authorization: `Bearer ${runtimeConfig.public.apiToken}`
+//   }
+// })
+// console.log(data);
 </script>
