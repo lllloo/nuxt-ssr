@@ -1,57 +1,43 @@
 <template>
     <section class="bg-white">
-        <div class="lg:grid lg:min-h-screen lg:grid-cols-12">
-            <section class="relative flex h-32 items-end bg-gray-900 lg:col-span-5 lg:h-full xl:col-span-6">
-                <img alt="Night"
-                    src="https://images.unsplash.com/photo-1617195737496-bc30194e3a19?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80"
+        <div class="flex h-full">
+            <section class="w-1/2 relative">
+                <img alt="Night" src="https://picsum.photos/720/1000"
                     class="absolute inset-0 h-full w-full object-cover opacity-80" />
             </section>
+            <main class="w-1/2 flex items-center justify-center">
+                <form class="w-full max-w-xs">
+                    <div class="mb-[20px]">
+                        <label for="Email" class="block mb-2">
+                            Email
+                        </label>
+                        <input type="email" id="Email" name="email" v-model="user.email"
+                            class="w-full rounded-md border-2 text-sm p-2" />
+                    </div>
 
-            <main class="flex items-center justify-center px-8 py-8 sm:px-12 lg:col-span-7 lg:px-16 lg:py-12 xl:col-span-6">
-                <div class="max-w-xl lg:max-w-3xl">
+                    <div class="mb-[30px]">
+                        <label for="Password" class="block mb-2">
+                            Password
+                        </label>
+                        <input type="password" id="Password" name="password" v-model="user.password"
+                            class="w-full rounded-md border-2 text-sm p-2" />
+                    </div>
 
-                    <form class="mt-8 grid grid-cols-6 gap-6">
+                    <a @click="login" href="javascript:;"
+                        class="flex items-center justify-center rounded-md w-full text-sm p-2 bg-blue-500 text-white">
+                        Login
+                    </a>
 
-                        <div class="col-span-6">
-                            <label for="Email" class="block text-sm font-medium text-gray-700">
-                                Email
-                            </label>
-
-                            <input type="email" id="Email" name="email" v-model="user.email"
-                                class="mt-1 w-full rounded-md border-gray-200 bg-white text-sm text-gray-700 shadow-sm" />
-                        </div>
-
-                        <div class="col-span-6 sm:col-span-3">
-                            <label for="Password" class="block text-sm font-medium text-gray-700">
-                                Password
-                            </label>
-
-                            <input type="password" id="Password" name="password" v-model="user.password"
-                                class="mt-1 w-full rounded-md border-gray-200 bg-white text-sm text-gray-700 shadow-sm" />
-                        </div>
-
-
-
-                        <div class="col-span-6 sm:flex sm:items-center sm:gap-4">
-                            <a @click="login"
-                                class="inline-block shrink-0 rounded-md border border-blue-600 bg-blue-600 px-12 py-3 text-sm font-medium text-white transition hover:bg-transparent hover:text-blue-600 focus:outline-none focus:ring active:text-blue-500">
-                                Login
-                            </a>
-
-                        </div>
-                    </form>
-                </div>
+                </form>
             </main>
         </div>
     </section>
 </template>
 <script setup>
-
 import {
     signInWithEmailAndPassword,
 } from 'firebase/auth'
 import { useFirebaseAuth } from 'vuefire'
-
 definePageMeta({
     layout: false,
 });
